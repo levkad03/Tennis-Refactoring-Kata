@@ -18,7 +18,6 @@ THIRTY = "Thirty"
 FORTY = "Forty"
 DEUCE = "Deuce"
 
-
 TENNIS_PTS = {
     0: LOVE,
     1: FIFTEEN,
@@ -80,9 +79,11 @@ class TennisGame2:
         return result
 
     def winner(self, result):
-        if self.p1points >= POINT_4 and self.p2points >= 0 and (self.p1points - self.p2points) >= POINT_2:
+        score_difference = self.p1points - self.p2points
+
+        if self.p1points >= POINT_4 and score_difference >= POINT_2:
             result = WIN_PLAYER_1
-        elif self.p2points >= POINT_4 and self.p1points >= 0 and (self.p2points - self.p1points) >= POINT_2:
+        elif self.p2points >= POINT_4 and -score_difference >= POINT_2:
             result = WIN_PLAYER_2
         return result
 
